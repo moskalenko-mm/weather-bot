@@ -1,0 +1,9 @@
+{
+  "start_msg": "Привіт! Я погодний бот. Оберіть дію.",
+  "select_country_letter_msg": "Оберіть першу літеру країни:",
+  "select_country_msg": "Оберіть країну:",
+  "select_city_msg": "Оберіть місто:",
+  "select_date_msg": "Введіть дату:",
+  "select_time_msg": "Оберіть годину:",
+  "weather_msg": "Погода в {{city}} на {{date}} {{time}}:00 \nТемпература: {{temp_c}}°C\nУмови: {{condition}}"
+}
