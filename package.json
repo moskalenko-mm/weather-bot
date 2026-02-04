@@ -1,0 +1,9 @@
+{
+"name": "gitcall-example",
+"version": "1.0.0",
+"description": "gitcall example",
+"dependencies": {
+"crypto-js": "^4.1.1",
+"moment": "^2.29.4"
+}
+}
