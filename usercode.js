@@ -1,4 +1,4 @@
-exports.main = function(data) {
+exports.usercode = function(data) {
     var action = data.action;
     var lang = data.lang || 'ua';
     var keyName = (lang === 'en') ? 'nameUS' : 'nameUA';
