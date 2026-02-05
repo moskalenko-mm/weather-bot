@@ -1,6 +1,6 @@
 [
   {"code":"AF","nameUS":"Afghanistan","nameUA":"Афганістан"},
-  {"code":"AX","nameUS":"Åland Islands","nameUA":"Аландські острови"},
+  {"code":"AX","nameUS":"Aland Islands","nameUA":"Аландські острови"},
   {"code":"AL","nameUS":"Albania","nameUA":"Албанія"},
   {"code":"DZ","nameUS":"Algeria","nameUA":"Алжир"},
   {"code":"AS","nameUS":"American Samoa","nameUA":"Американське Самоа"},
@@ -243,3 +243,4 @@
   {"code":"ZM","nameUS":"Zambia","nameUA":"Замбія"},
   {"code":"ZW","nameUS":"Zimbabwe","nameUA":"Зімбабве"}
 ]
+
