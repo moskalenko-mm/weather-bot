@@ -4,7 +4,6 @@ module.exports = function(data) {
     var action = data.action;
     var lang = data.lang || 'ua';
     
-    // Визначаємо ключі для мови
     var keyName = (lang === 'en') ? 'nameUS' : 'nameUA';
     var sortLocale = (lang === 'en') ? 'en' : 'uk';
 
@@ -53,12 +52,9 @@ module.exports = function(data) {
             data.countries = result;
 
         } else if (action === 'get_city_letters') {
-            // 1. Спочатку знайдемо назву країни
             var countryPath = path.join(__dirname, 'country.json');
             var countries = require(countryPath);
             var countryCode = data.country_code;
-
-            // Шукаємо країну
             var currentCountry = countries.find(function(c) {
                 return c.code === countryCode;
             });
@@ -87,7 +83,7 @@ module.exports = function(data) {
             cityLetters.sort(function(a, b) { return a.localeCompare(b, sortLocale); });
             data.letters = cityLetters;
 
-        } else if (action === 'get_cities') {
+        } (action === 'get_cities') {
             var cityPath = path.join(__dirname, 'city.json');
             var cities = require(cityPath);
             var countryCode = data.country_code;
@@ -96,9 +92,15 @@ module.exports = function(data) {
             var filtered = cities.filter(function(city) {
                 return city.code === countryCode && city[keyName] && city[keyName].startsWith(letter);
             });
+
             var result = filtered.map(function(city) {
-                return { "name": city[keyName], "country_code": city.code };
+                return {
+                    "name": city[keyName],
+                    "name_en": city.nameUS, 
+                    "country_code": city.code
+                };
             });
+            
             result.sort(function(a, b) { return a.name.localeCompare(b.name, sortLocale); });
             data.cities = result;
         }
