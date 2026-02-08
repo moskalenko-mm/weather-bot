@@ -55,6 +55,7 @@ module.exports = function(data) {
             var countryPath = path.join(__dirname, 'country.json');
             var countries = require(countryPath);
             var countryCode = data.country_code;
+
             var currentCountry = countries.find(function(c) {
                 return c.code === countryCode;
             });
@@ -62,7 +63,6 @@ module.exports = function(data) {
             if (currentCountry) {
                 data.country_name = currentCountry[keyName];
             }
-
 
             var cityPath = path.join(__dirname, 'city.json');
             var cities = require(cityPath);
@@ -83,7 +83,7 @@ module.exports = function(data) {
             cityLetters.sort(function(a, b) { return a.localeCompare(b, sortLocale); });
             data.letters = cityLetters;
 
-        } (action === 'get_cities') {
+        } else if (action === 'get_cities') {
             var cityPath = path.join(__dirname, 'city.json');
             var cities = require(cityPath);
             var countryCode = data.country_code;
