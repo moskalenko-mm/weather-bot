@@ -2,6 +2,7 @@
   "ua": {
     "start_msg": "Привіт! Я погодний бот. Оберіть дію.",
     "select_country_letter_msg": "Оберіть першу літеру країни:",
+    "select_city_letter_msg": "Оберіть першу літеру міста:",
     "select_country_msg": "Оберіть країну:",
     "select_city_msg": "Оберіть місто:",
     "select_date_msg": "Введіть дату:",
@@ -11,6 +12,7 @@
   "en": {
     "start_msg": "Hi! I am a weather bot. Please choose an action.",
     "select_country_letter_msg": "Choose the first letter of the country:",
+    "select_city_letter_msg": "Choose the first letter of the city:",
     "select_country_msg": "Choose a country:",
     "select_city_msg": "Choose a city:",
     "select_date_msg": "Enter a date:",
