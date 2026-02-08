@@ -1,25 +1,29 @@
 var path = require('path');
 
-// ПРИБРАЛИ callback з аргументів
 module.exports = function(data) {
     var action = data.action;
     var lang = data.lang || 'ua';
     
+    // Налаштування для сортування
     var keyName = (lang === 'en') ? 'nameUS' : 'nameUA';
     var sortLocale = (lang === 'en') ? 'en' : 'uk';
 
     try {
         if (action === 'get_config') {
+            // Завантажуємо конфіг
             var configPath = path.join(__dirname, 'question_config.json');
-            var config = require(configPath);
-            
-            var configData = config[lang] || config['ua'];
-            
-            data.txt_start = configData.start_msg;
-            data.txt_select_country = configData.select_country_msg;
-            data.txt_select_city = configData.select_city_msg;
-            data.txt_date = configData.select_date_msg;
-            data.txt_time = configData.select_time_msg;
+            var rawConfig = require(configPath);
+
+            var conf = rawConfig[lang] || rawConfig['ua'];
+
+            data.config = {
+                txt_start: conf.start_msg,
+                txt_select_country: conf.select_country_msg,
+                txt_select_city: conf.select_city_msg,
+                txt_date: conf.select_date_msg,
+                txt_time: conf.select_time_msg,
+                txt_weather: conf.weather_msg
+            };
 
         } else if (action === 'get_letters') {
             var countryPath = path.join(__dirname, 'country.json');
