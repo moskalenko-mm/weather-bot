@@ -3,12 +3,15 @@ var path = require('path');
 module.exports = function(data, callback) {
     var action = data.action;
     var lang = data.lang || 'ua';
+    
     var keyName = (lang === 'en') ? 'nameUS' : 'nameUA';
     var sortLocale = (lang === 'en') ? 'en' : 'uk';
 
     try {
         if (action === 'get_config') {
-            var config = require('./question_config.json');
+            var configPath = path.join(__dirname, 'question_config.json');
+            var config = require(configPath);
+            
             var configData = config[lang] || config['ua'];
             
             data.txt_start = configData.start_msg;
@@ -18,9 +21,10 @@ module.exports = function(data, callback) {
             data.txt_time = configData.select_time_msg;
 
         } else if (action === 'get_letters') {
-            var countries = require('./country.json');
-            var letters = [];
+            var countryPath = path.join(__dirname, 'country.json');
+            var countries = require(countryPath);
             
+            var letters = [];
             countries.forEach(function(c) {
                 var name = c[keyName];
                 if (name) {
@@ -28,17 +32,16 @@ module.exports = function(data, callback) {
                     if (letters.indexOf(firstChar) === -1) letters.push(firstChar);
                 }
             });
-            
             letters.sort(function(a, b) {
                 return a.localeCompare(b, sortLocale);
             });
-            
             data.letters = letters;
 
         } else if (action === 'get_countries') {
-            var countries = require('./country.json');
-            var letter = data.letter; 
+            var countryPath = path.join(__dirname, 'country.json');
+            var countries = require(countryPath);
             
+            var letter = data.letter; 
             var filtered = countries.filter(function(c) {
                 return c[keyName] && c[keyName].startsWith(letter);
             });
@@ -46,15 +49,15 @@ module.exports = function(data, callback) {
             var result = filtered.map(function(c) {
                 return { "name": c[keyName], "code": c.code };
             });
-            
             result.sort(function(a, b) {
                 return a.name.localeCompare(b.name, sortLocale);
             });
-
             data.countries = result;
 
         } else if (action === 'get_city_letters') {
-            var cities = require('./city.json');
+            var cityPath = path.join(__dirname, 'city.json');
+            var cities = require(cityPath);
+            
             var countryCode = data.country_code;
             var cityLetters = [];
 
@@ -71,15 +74,15 @@ module.exports = function(data, callback) {
                     }
                 }
             });
-            
             cityLetters.sort(function(a, b) {
                 return a.localeCompare(b, sortLocale);
             });
-            
             data.letters = cityLetters;
 
         } else if (action === 'get_cities') {
-            var cities = require('./city.json');
+            var cityPath = path.join(__dirname, 'city.json');
+            var cities = require(cityPath);
+            
             var countryCode = data.country_code;
             var letter = data.letter;
 
@@ -93,17 +96,17 @@ module.exports = function(data, callback) {
                     "country_code": city.code
                 };
             });
-            
             result.sort(function(a, b) {
                 return a.name.localeCompare(b.name, sortLocale);
             });
-
             data.cities = result;
-        } 
+        }
+
         callback(null, data);
 
     } catch (e) {
         data.git_error = e.toString();
+        data.error_stack = e.stack;
         callback(null, data);
     }
 };
