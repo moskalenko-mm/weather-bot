@@ -1,6 +1,7 @@
 var path = require('path');
 
-module.exports = function(data, callback) {
+// ПРИБРАЛИ callback з аргументів
+module.exports = function(data) {
     var action = data.action;
     var lang = data.lang || 'ua';
     
@@ -23,8 +24,8 @@ module.exports = function(data, callback) {
         } else if (action === 'get_letters') {
             var countryPath = path.join(__dirname, 'country.json');
             var countries = require(countryPath);
-            
             var letters = [];
+            
             countries.forEach(function(c) {
                 var name = c[keyName];
                 if (name) {
@@ -32,81 +33,62 @@ module.exports = function(data, callback) {
                     if (letters.indexOf(firstChar) === -1) letters.push(firstChar);
                 }
             });
-            letters.sort(function(a, b) {
-                return a.localeCompare(b, sortLocale);
-            });
+            letters.sort(function(a, b) { return a.localeCompare(b, sortLocale); });
             data.letters = letters;
 
         } else if (action === 'get_countries') {
             var countryPath = path.join(__dirname, 'country.json');
             var countries = require(countryPath);
-            
             var letter = data.letter; 
+            
             var filtered = countries.filter(function(c) {
                 return c[keyName] && c[keyName].startsWith(letter);
             });
-
             var result = filtered.map(function(c) {
                 return { "name": c[keyName], "code": c.code };
             });
-            result.sort(function(a, b) {
-                return a.name.localeCompare(b.name, sortLocale);
-            });
+            result.sort(function(a, b) { return a.name.localeCompare(b.name, sortLocale); });
             data.countries = result;
 
         } else if (action === 'get_city_letters') {
             var cityPath = path.join(__dirname, 'city.json');
             var cities = require(cityPath);
-            
             var countryCode = data.country_code;
             var cityLetters = [];
 
             var countryCities = cities.filter(function(city) {
                 return city.code === countryCode;
             });
-
             countryCities.forEach(function(city) {
                 var name = city[keyName];
                 if (name) {
                     var firstChar = name.charAt(0).toUpperCase();
-                    if (cityLetters.indexOf(firstChar) === -1) {
-                        cityLetters.push(firstChar);
-                    }
+                    if (cityLetters.indexOf(firstChar) === -1) cityLetters.push(firstChar);
                 }
             });
-            cityLetters.sort(function(a, b) {
-                return a.localeCompare(b, sortLocale);
-            });
+            cityLetters.sort(function(a, b) { return a.localeCompare(b, sortLocale); });
             data.letters = cityLetters;
 
         } else if (action === 'get_cities') {
             var cityPath = path.join(__dirname, 'city.json');
             var cities = require(cityPath);
-            
             var countryCode = data.country_code;
             var letter = data.letter;
 
             var filtered = cities.filter(function(city) {
                 return city.code === countryCode && city[keyName] && city[keyName].startsWith(letter);
             });
-
             var result = filtered.map(function(city) {
-                return {
-                    "name": city[keyName],
-                    "country_code": city.code
-                };
+                return { "name": city[keyName], "country_code": city.code };
             });
-            result.sort(function(a, b) {
-                return a.name.localeCompare(b.name, sortLocale);
-            });
+            result.sort(function(a, b) { return a.name.localeCompare(b.name, sortLocale); });
             data.cities = result;
         }
 
-        callback(null, data);
+        return data;
 
     } catch (e) {
         data.git_error = e.toString();
-        data.error_stack = e.stack;
-        callback(null, data);
+        return data;
     }
 };
