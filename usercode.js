@@ -22,7 +22,9 @@ module.exports = function(data) {
                 txt_select_city: conf.select_city_msg,
                 txt_date: conf.select_date_msg,
                 txt_time: conf.select_time_msg,
-                txt_weather: conf.weather_msg
+                txt_weather: conf.weather_msg,
+                txt_country_letter: conf.select_country_letter_msg,
+                txt_city_letter: conf.select_city_letter_msg
             };
 
         } else if (action === 'get_letters') {
