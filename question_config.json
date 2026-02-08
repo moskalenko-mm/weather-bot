@@ -7,7 +7,7 @@
     "select_city_msg": "Оберіть місто:",
     "select_date_msg": "Введіть дату:",
     "select_time_msg": "Оберіть годину:",
-    "weather_msg": "Погода в {{city}} на {{date}} {{time}}:00 \nТемпература: {{temp_c}}°C\nУмови: {{condition}}"
+    "weather_msg": "Погода в {{city}} на {{date}} {{time}} \nТемпература: {{temp_c}}°C\nУмови: {{condition}}"
   },
   "en": {
     "start_msg": "Hi! I am a weather bot. Please choose an action.",
@@ -17,6 +17,6 @@
     "select_city_msg": "Choose a city:",
     "select_date_msg": "Enter a date:",
     "select_time_msg": "Select an hour:",
-    "weather_msg": "Weather in {{city}} on {{date}} at {{time}}:00 \nTemperature: {{temp_c}}°C\nConditions: {{condition}}"
+    "weather_msg": "Weather in {{city}} on {{date}} at {{time}} \nTemperature: {{temp_c}}°C\nConditions: {{condition}}"
   }
 }
