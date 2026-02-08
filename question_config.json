@@ -1,6 +1,6 @@
 {
   "ua": {
-    "start_msg": "Привіт! Я погодний бот. Оберіть дію.",
+    "start_msg": "Привіт! 👋 Я погодний бот. Щоб показати точну погоду, поставлю кілька швидких запитань.",
     "select_country_letter_msg": "Оберіть першу літеру країни:",
     "select_city_letter_msg": "Оберіть першу літеру міста:",
     "select_country_msg": "Оберіть країну:",
@@ -10,7 +10,7 @@
     "weather_msg": "Погода в {{city}} на {{date}} {{time}} \nТемпература: {{temp_c}}°C\nУмови: {{condition}}"
   },
   "en": {
-    "start_msg": "Hi! I am a weather bot. Please choose an action.",
+    "start_msg": "Hi! 👋 I’m a weather bot. I’ll ask you a few quick questions to give you the most accurate forecast.",
     "select_country_letter_msg": "Choose the first letter of the country:",
     "select_city_letter_msg": "Choose the first letter of the city:",
     "select_country_msg": "Choose a country:",
