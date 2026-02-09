@@ -21,7 +21,9 @@ module.exports = function(data) {
                 txt_time: conf.select_time_msg,
                 txt_city_letter: conf.select_city_letter_msg,
                 txt_country_letter: conf.select_country_letter_msg,
-                txt_weather: conf.weather_msg
+                txt_weather: conf.weather_msg,
+                txt_no_countries: conf.err_no_countries,
+                txt_no_cities: conf.err_no_cities
             };
 
         } else if (action === 'get_letters') {
