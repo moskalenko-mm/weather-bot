@@ -7,7 +7,9 @@
     "select_city_msg": "Оберіть місто:",
     "select_date_msg": "Введіть дату:",
     "select_time_msg": "Оберіть годину:",
-    "weather_msg": "Погода в {{city}} на {{date}} {{time}} \nТемпература: {{temp_c}}°C\nУмови: {{condition}}"
+    "weather_msg": "Погода в {{city}} на {{date}} {{time}} \nТемпература: {{temp_c}}°C\nУмови: {{condition}}",
+    "err_no_countries": "😔 На жаль, ми не знайшли країн на вашу букву. Спробуйте знову за командою /start.",
+    "err_no_cities": "😔 У цій країні немає відомих нам міст на вашу букву. Спробуйте знову за командою /start."
   },
   "en": {
     "start_msg": "Hi! 👋 I’m a weather bot. I’ll ask you a few quick questions to give you the most accurate forecast.",
@@ -17,6 +19,8 @@
     "select_city_msg": "Choose a city:",
     "select_date_msg": "Enter a date:",
     "select_time_msg": "Select an hour:",
-    "weather_msg": "Weather in {{city}} on {{date}} at {{time}} \nTemperature: {{temp_c}}°C\nConditions: {{condition}}"
+    "weather_msg": "Weather in {{city}} on {{date}} at {{time}} \nTemperature: {{temp_c}}°C\nConditions: {{condition}}",
+    "err_no_countries": "😔 Sorry, we couldn't find any countries starting with your letter. Please try again via /start",
+    "err_no_cities": "😔 We couldn't find any cities in this country starting with your letter. Please try again via /start"
   }
 }
